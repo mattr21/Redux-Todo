@@ -13,7 +13,7 @@ const initialState = {
 
 // create a switch for each action case. Don't forget to import each action
 // you export default here which means this is what rootreducer is in src/index.js
-export default (state = initialState, action) => {
+export default (state = initialState, action) => { 
     switch (action.type) {
         // what happens when ADD_TODO is used
         case ADD_TODO: 
