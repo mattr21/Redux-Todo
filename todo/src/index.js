@@ -1,14 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import App from './App';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux'; 
-import rootReducer from './reducers';
+import reducer from './reducers/reducer';
 
 // creates the store. Don't forget to import createStore
-// rootReducer is the reducer function. Don't forget to import rootReducer
-const store = createStore(rootReducer); 
+// reducer is the reducer function. Don't forget to import reducer
+const store = createStore(reducer); 
 
 ReactDOM.render(
     // Wrap App in Provider. Don't forget to import Provider

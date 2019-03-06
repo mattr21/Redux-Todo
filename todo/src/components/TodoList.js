@@ -1,18 +1,44 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Todo from './Todo';
+import { addTodo } from '../actions'
 
-const TodoList = props => {
-    return (
-        <div>
-            {props.todos.map(todo => (
-                <>
-                    <Todo todo={todo} />
-                    <TodoForm />
-                </>
-            ))}
-        </div>
-    );
+class TodoList extends React.Component { 
+    state = {
+        newTask: '',
+    }
+
+    handleChanges = e => {
+        this.setState({ newTask: e.target.value })
+    }
+
+    addTodo = e => {
+        e.preventDefault()
+        this.props.addTodo(this.state.newTask)
+        this.setState({ newTask: '' })
+    } 
+
+    render () {
+        // console.log(this.props, "TodoList")
+        return (
+            <>
+                <div>
+                    {this.props.todos.map(todo => (
+                        <h4 key={todo.id}>
+                            {todo.task}
+                        </h4>
+                    ))}
+                </div>
+                <input 
+                    type="text"
+                    name="newTask"
+                    value={this.state.newTask}
+                    onChange={this.handleChanges}
+                    placeholder="Add new task"
+                />
+                <button onClick={this.addTodo}>Add Task</button>
+            </>
+        );
+    }
 }
 
 const mapStateToProps = state => {
@@ -21,5 +47,5 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, {})(TodoList)
+export default connect(mapStateToProps, { addTodo })(TodoList)
 

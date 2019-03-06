@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import './App.css';
 import TodoList from './components/TodoList';
-import Todo from './components/Todo';
+import TodoForm from './components/TodoForm'
 
 class App extends Component {
   render() {
@@ -14,3 +13,4 @@ class App extends Component {
 }
 
 export default App;
+
